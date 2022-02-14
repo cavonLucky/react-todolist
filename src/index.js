@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+/**
+ * PWA: progressive web application
+ * https 协议的服务器上，
+ * 即使断网了第二次进来依然可以看到之前访问到，
+ * 因为 registerServiceWorker 会帮助我们把之前的网页存储在浏览器之内
+ */
+// import registerServiceWorker form './registerServiceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App />,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
