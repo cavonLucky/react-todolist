@@ -1,6 +1,7 @@
 # React16.4 开发简书项目 从零基础入门到实战
 
-## react 简介
+## react 初探
+### react 简介
 
 1. Facebook 推出
 2. 2013年5月开源
@@ -9,7 +10,7 @@
 5. 健全的文档与 完善的社区
 6. 16版本之后的称之为 react fiber 或者 16 版本中的底层实现
 
-## 开发环境准备
+### 开发环境准备
 
 1. 引入 .js 文件来使用 react 
 2. 通过脚手架工具来编码 （grunt、gulp、webpack）
@@ -45,3 +46,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+
+### JSX 语法
+
+使用 jsx 语法必须引入 react，不然没办法编译直接报错（render 里面的标签都是 jsx 语法）。在 react 在中，在 js 文件里面写的标签称之为 jsx 语法。
