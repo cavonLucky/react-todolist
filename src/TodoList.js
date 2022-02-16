@@ -1,4 +1,5 @@
 import React from "react";
+import './style.css';
 
 class TodoList extends React.Component {
 
@@ -31,7 +32,9 @@ class TodoList extends React.Component {
     return (
       <React.Fragment>
         <div>
-          <input value={inputValue} onChange={this.handleInputChange.bind(this)} />
+          {/* 点击文字输入内容鼠标光标移入 input 框 */}
+          <label htmlFor="insertArea">输入内容</label>
+          <input id="insertArea" className="input" value={inputValue} onChange={this.handleInputChange.bind(this)} />
           <button onClick={this.handleBtnClick.bind(this)}>提交</button>
         </div>
         <ul>
@@ -39,7 +42,17 @@ class TodoList extends React.Component {
           <li>学 react</li> */}
           {
             list.map((item, index) => {
-              return <li key={index} onClick={this.handleItemDelete.bind(this, index)}>{item}</li>
+              return (
+                <li
+                  key={index}
+                  onClick={this.handleItemDelete.bind(this, index)}
+                  // 转义：在 input 中输入 <h1>hello world</h1> 转义成 hello world
+                  dangerouslySetInnerHTML={{ __html: item }}
+                >
+                  {/* 由于用到了 dangerouslySetInnerHTML 转义属性下面就不需要渲染展示了 */}
+                  {/* {item} */}
+                </li>
+              )
             })
           }
         </ul>
