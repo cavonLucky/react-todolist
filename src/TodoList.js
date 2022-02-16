@@ -1,6 +1,6 @@
 import React from "react";
+import TodoItem from "./TodoItem";
 import './style.css';
-
 class TodoList extends React.Component {
 
   constructor(props) {
@@ -32,26 +32,20 @@ class TodoList extends React.Component {
     return (
       <React.Fragment>
         <div>
-          {/* 点击文字输入内容鼠标光标移入 input 框 */}
           <label htmlFor="insertArea">输入内容</label>
           <input id="insertArea" className="input" value={inputValue} onChange={this.handleInputChange.bind(this)} />
           <button onClick={this.handleBtnClick.bind(this)}>提交</button>
         </div>
         <ul>
-          {/* <li>学英语</li>
-          <li>学 react</li> */}
           {
             list.map((item, index) => {
               return (
-                <li
+                <TodoItem
                   key={index}
-                  onClick={this.handleItemDelete.bind(this, index)}
-                  // 转义：在 input 中输入 <h1>hello world</h1> 转义成 hello world
-                  dangerouslySetInnerHTML={{ __html: item }}
-                >
-                  {/* 由于用到了 dangerouslySetInnerHTML 转义属性下面就不需要渲染展示了 */}
-                  {/* {item} */}
-                </li>
+                  content={item}
+                  index={index}
+                  deleteItem={this.handleItemDelete.bind(this)}
+                />
               )
             })
           }
