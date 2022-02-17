@@ -19,7 +19,9 @@ class TodoItem extends React.Component {
 
 // 做属性类型的强校验
 TodoItem.propTypes = {
-  content: PropTypes.string,
+  // content: PropTypes.string,
+  // number || string
+  content: PropTypes.arrayOf(PropTypes.number, PropTypes.string),
   deleteItem: PropTypes.func,
   index: PropTypes.number,
   test: PropTypes.string.isRequired 
