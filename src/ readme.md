@@ -59,3 +59,44 @@ ReactDOM.render(
 4. 单向数据流
 5. 视图层框架
 6. 函数式编程
+
+### React 中的虚拟DOM
+
+假设没有 react ，我们自己要实现一个当state发生改变的时候，render函数要重新执行，重新的去渲染一次页面，应该怎么实现？
+1. 需要定义一个 state，先有数据
+2. 有一个 jsx 模版，jsx 模版就是 render 函数里面的 jsx 的代码
+3. 把数据 + 模版结合，生成真实的 dom 来显示
+4. 一旦数据 state 发生改变了
+5. 数据 + 模版结合，生成真实的 dom，替换原始的 dom
+
+缺陷：
+1. 第一次生产了一个完整的 dom 片段
+2. 第二次生产了一个完整的 dom 片段
+3. 第二次的 dom 替换了第一次的 dom，非常耗性能
+
+优化：（性能提升）
+1. state 数据
+2. jsx 模版
+3. 数据 + 模版结合，生成真实的 dom，来显示
+4. state 发生改变
+5. 数据 + 模版结合，生成真实的 dom ，并不直接替换原始的 dom
+6. 新的 dom（documentFragment：文档碎片） 和原始的 dom 做比对，找差异
+7. 找出 input 框发生的变化
+8. 只用新的 dom 中的 input 元素，替换掉老的 dom 中的 input 元素
+
+缺陷：（性能提升并不明显）
+1. state 数据
+2. jsx 模版
+3. 数据 + 模版结合，生成真实的 dom ，来显示<br>
+例如：生成的真实dom `<div id="abc"><span>hello world</span></div>`
+4. 生成虚拟 dom （虚拟 dom 就是一个 js 对象，用它来描述真实 dom）（损耗性能）<br>
+`['div', {id: 'abc'}, ['span', {}, 'hello world']]`
+5. state 发生变化
+6. 数据 + 模版 生成一个新的虚拟 dom（极大的提升性能）<br>
+`['div', {id: 'abc'}, ['span', {}, 'bye bye']]`
+7. 比较原始虚拟 dom 和新的虚拟 dom 的区别，找到区别是 span 中的内容（极大的提升性能）
+8. 直接操作 dom，改变 span 中的内容
+
+
+
+
