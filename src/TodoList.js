@@ -1,10 +1,12 @@
 import React from "react";
 import TodoItem from "./TodoItem";
-import './style.css';
+import Test from "./Test";
+import "./style.css";
 class TodoList extends React.Component {
 
   constructor(props) {
     super(props);
+    // 当组件的state或者props发生改变的时候，render 函数就会重新执行
     this.state = {
       inputValue: '',
       list: []
@@ -52,7 +54,7 @@ class TodoList extends React.Component {
   }
 
   render() {
-
+    console.log('render');
     const { inputValue } = this.state;
     return (
       <React.Fragment>
@@ -64,6 +66,7 @@ class TodoList extends React.Component {
         <ul>
           {this.getTodoItem()}
         </ul>
+        <Test content={inputValue} />
       </React.Fragment>
     )
   }
