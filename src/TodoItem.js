@@ -12,7 +12,10 @@ class TodoItem extends React.Component {
   render() {
     const { content, test } = this.props;
     return (
+      // JSX -> JS 对象 -> 真实的 DOM
       <div onClick={this.handleClick}>{test} - {content}</div>
+      // 更倾向一个 react 的底层的结构, JSX -> createElement -> 虚拟 dom(JS 对象) -> 真实的 DOM
+      // React.createElement('div', {}, 'item');
     )
   }
 }

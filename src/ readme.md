@@ -97,6 +97,24 @@ ReactDOM.render(
 7. 比较原始虚拟 dom 和新的虚拟 dom 的区别，找到区别是 span 中的内容（极大的提升性能）
 8. 直接操作 dom，改变 span 中的内容
 
+react 数据视频更新原理：
+1. state 数据
+2. jsx 模版
+3. 数据 + 模版 生成虚拟 dom（虚拟 dom 就是一个 js 对象，用它来描述真实 dom）（损耗性能）<br>
+`['div', {id: 'abc'}, ['span', {}, 'hello world']]`
+4. 用虚拟 dom 的结构生成真实的 dom，来显示<br>
+`<div id="abc"><span>hello world</span></div>`
+5. state 发生变化
+6. 数据 + 模版 生成新的虚拟 dom（极大的提升性能）<br>
+`['div', {id: 'abc'}, ['span', {}, 'bye bye']]`
+7. 比较原始虚拟 dom 和新的虚拟 dom 的区别，找到区别是 span 的内容（极大的提升性能）
+8. 直接操作 dom，改变 span 中的内容
+
+虚拟 dom 优点：
+1. 性能提示了
+2. 使得跨端应用得以实现，react native
+
+
 
 
 
