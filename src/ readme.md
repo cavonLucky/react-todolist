@@ -114,6 +114,8 @@ react 数据视频更新原理：
 1. 性能提示了
 2. 使得跨端应用得以实现，react native
 
+### 虚拟 DOM 中的 Diff 算法
+原始虚拟 dom 和新的虚拟 dom 比对的方式就叫 diff算法（difference），同层比对
 
 
 
