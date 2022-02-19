@@ -29,7 +29,7 @@ class TodoList extends React.Component {
       // 由于 setState 是异步，第二个参数是回调函数，所以此时直接操作的真实的dom结果正确 
       console.log(this.ul.querySelectorAll('div').length);
     });
-    // 直接操作真实的 dom 结果不对，ref 导致的，所以不建议、也尽量不使用 ref
+    // 直接操作真实的 dom 结果不对，ref 导致的，所以不建议、也尽量不使用 ref 
     // console.log(this.ul.querySelectorAll('div').length); // 从 0 开始，0 1 2... 
   }
 
@@ -57,7 +57,6 @@ class TodoList extends React.Component {
   }
 
   render() {
-    console.log('render');
     const { inputValue } = this.state;
     return (
       <React.Fragment>
