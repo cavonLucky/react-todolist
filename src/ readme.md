@@ -16,7 +16,7 @@
 2. 通过脚手架工具来编码 （grunt、gulp、webpack）
 3. create-react-app （官方提供的、健壮性、使用简单……）
 
-<pre>
+```javascript
 npx create-react-app react-todolist
 cd react-todolist
 npm start
@@ -26,9 +26,9 @@ sudo npm install -g yarn
 // (开机密码)
 Password:
 
-</pre>
-
 ```
+
+```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -121,9 +121,9 @@ react 数据视频更新原理：
 
 生命周期函数指在某一个时刻组件会自动执行的函数
 
-![React 生命周期函数](./images/react 生命周期函数.jpeg)
+![React 生命周期函数](./images/React生命周期函数.jpeg)
 
-```
+```javascript
   // 在组件即将被挂载到页面的时刻 自动执行
   componentWillMount() {
     console.log('componentWillMount ');
@@ -171,8 +171,9 @@ react 数据视频更新原理：
   componentWillUnmount() {
     console.log('child componentWillUnmount');
   }
-  
+
   console.log('child render');
+
 ```
 
 
