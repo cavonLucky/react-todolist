@@ -117,6 +117,65 @@ react 数据视频更新原理：
 ### 虚拟 DOM 中的 Diff 算法
 原始虚拟 dom 和新的虚拟 dom 比对的方式就叫 diff算法（difference），同层比对
 
+### React 的生命周期函数
+
+生命周期函数指在某一个时刻组件会自动执行的函数
+
+![React 生命周期函数](./images/react 生命周期函数.jpeg)
+
+```
+  // 在组件即将被挂载到页面的时刻 自动执行
+  componentWillMount() {
+    console.log('componentWillMount ');
+  }
+
+  // 组件在被挂载到页面之后自动被执行
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+
+  // 组件被更新之前，他会被自动执行
+  shouldComponentUpdate() {
+    console.log('shouldComponentUpdate');
+    // 你的组件需要更新吗：
+    return true;
+    // return false;
+  }
+
+  // 组件被更新之前，它会自动执行，但是他在shouldComponentUpdate之后
+  // 如果 shouldComponentUpdate 返回true它会执行
+  // 如果返回 false 这个函数就不会被执行了
+  componentWillUpdate() {
+    console.log('componentWillUpdate');
+  }
+
+  // 组件更新完成之后，它会被执行
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
+  }
+
+  console.log('parent render');
+
+
+  /**
+   * 1. 当一个组件要从父组件接收参数（条件）
+   * // 2. 只要父组件的 render 函数被重新执行了，子组件的这个生命周期函数就会被执行（执行时刻）
+   * 如果这个组件第一次存在于父组件中，不会执行
+   * 如果这个组件之前已经存在于父组件中，才会执行
+   */
+  componentWillReceiveProps() {
+    console.log('child componentWillReceiveProps');
+  }
+
+  // 当这个组件即将被从页面中剔除的时候，会被执行
+  componentWillUnmount() {
+    console.log('child componentWillUnmount');
+  }
+  
+  console.log('child render');
+```
+
+
 
 
 
