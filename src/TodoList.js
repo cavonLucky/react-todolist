@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios"; 
+import axios from "axios";
 import TodoItem from "./TodoItem";
 import "./style.css";
 class TodoList extends React.Component {
@@ -53,10 +53,11 @@ class TodoList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/todolist').then(() => {
-      alert('success');
-    }).catch(() => {
-      alert('error');
+    axios.get('todolist.json').then(response => {
+      console.log(response.data);
+      this.setState(() => ({ list: [...response.data] }));
+    }).catch(error => {
+      console.log(error);
     });
   }
 
