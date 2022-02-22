@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import TodoItem from "./TodoItem";
-import "./style.css";
 class TodoList extends React.Component {
 
   constructor(props) {
