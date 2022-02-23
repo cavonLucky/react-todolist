@@ -1,5 +1,5 @@
 import React from "react";
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import "./style.css";
 
 class App extends React.Component {
@@ -7,32 +7,37 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: true
+      list: []
     }
-    this.handleToggole = this.handleToggole.bind(this);
+    this.handleAddItem = this.handleAddItem.bind(this);
   }
 
-  handleToggole() {
-    let show = this.state.show ? false : true;
-    this.setState({ show });
+  handleAddItem() {
+    this.setState((prevState) => ({ list: [...prevState.list, 'item'] }));
   }
 
   render() {
-    const { show } = this.state;
+    const { list } = this.state;
     return (
       <React.Fragment>
-        <CSSTransition
-          in={show}
-          timeout={1000}
-          // 与 css 样式的类名前缀保持一致即可
-          classNames={'fade'}
-          unmountOnExit
-          onEntered={(el) => { el.style.color = 'blue'; }}
-          appear={true}
-        >
-          <div>hello</div>
-        </CSSTransition>
-        <button onClick={this.handleToggole}>toggole</button>
+        {/* 一组动画用 TransitionGroup 包裹然后立马使用 CSSTransition，单个动画 CSSTransition */}
+        <TransitionGroup>
+          {
+            list.map((item, index) => (
+              <CSSTransition
+                key={index}
+                timeout={1000}
+                classNames={'fade'}
+                unmountOnExit
+                onEntered={(el) => { el.style.color = 'blue'; }}
+                appear={true}
+              >
+                <div>{item}</div>
+              </CSSTransition>
+            ))
+          }
+        </TransitionGroup>
+        <button onClick={this.handleAddItem}>toggole</button>
       </React.Fragment>
     )
   }
