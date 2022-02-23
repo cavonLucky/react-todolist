@@ -176,6 +176,13 @@ react 数据视频更新原理：
 
 ```
 
+### Redux 概念简述
+
+![Redux设计理念图](./images/Redux设计理念.jpg)
+
+`Redux = Reducer + Flux`
+
+![Redux工作流程图](./images/Redux工作流程图.jpg)
 
 
 
