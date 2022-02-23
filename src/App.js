@@ -1,4 +1,5 @@
 import React from "react";
+import { CSSTransition } from 'react-transition-group';
 import "./style.css";
 
 class App extends React.Component {
@@ -20,7 +21,17 @@ class App extends React.Component {
     const { show } = this.state;
     return (
       <React.Fragment>
-        <div className={show ? 'show' : 'hide'}>hello</div>
+        <CSSTransition
+          in={show}
+          timeout={1000}
+          // 与 css 样式的类名前缀保持一致即可
+          classNames={'fade'}
+          unmountOnExit
+          onEntered={(el) => { el.style.color = 'blue'; }}
+          appear={true}
+        >
+          <div>hello</div>
+        </CSSTransition>
         <button onClick={this.handleToggole}>toggole</button>
       </React.Fragment>
     )
