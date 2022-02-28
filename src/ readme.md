@@ -180,7 +180,12 @@ react 数据视频更新原理：
 
 ![Redux设计理念图](./images/Redux设计理念.jpg)
 
-`Redux = Reducer + Flux`
+`Redux = Reducer + Flux`<br/><br/><br/>
+
+* React Components：借书人
+* Action Creators：我要借某某某书？（借书人说的话）
+* Store：图书管理员
+* Reducers：记录本（管理员需要查阅书的工具，查到具体书籍给到借书人）
 
 ![Redux工作流程图](./images/Redux工作流程图.jpg)
 
