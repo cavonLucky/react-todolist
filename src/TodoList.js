@@ -21,7 +21,6 @@ class TodoList extends React.Component {
       type: 'change_input_value',
       value: e.target.value
     }
-    console.log('handleInputChange: ', e.target.value);
     store.dispatch(action);
   }
 

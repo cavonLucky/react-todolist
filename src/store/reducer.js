@@ -18,10 +18,11 @@ export default (state = defaultState, action) => {
   }
   if (action.type === "add_todo_tem") {
     const newState = JSON.parse(JSON.stringify(state));
-    newState.list.push(newState.value);
+    console.log(newState);
+    newState.list.push(newState.inputValue);
     newState.inputValue = '';
     console.log('add_todo_tem: ', newState);
-    // return newState;
+    return newState;
   }
   console.log('state, action: ', state, action);
   return state; 
