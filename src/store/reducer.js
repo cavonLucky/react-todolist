@@ -1,6 +1,6 @@
 const defaultState = {
   inputValue: "",
-  list: [1, 2]
+  list: []
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -14,6 +14,11 @@ export default (state = defaultState, action) => {
     const newState = JSON.parse(JSON.stringify(state));
     newState.list.push(newState.inputValue);
     newState.inputValue = "";
+    return newState;
+  }
+  if (action.type === "delete_todo_item") {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.list.splice(action.index, 1);
     return newState;
   }
   return state;
