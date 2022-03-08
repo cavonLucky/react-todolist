@@ -189,6 +189,24 @@ react 数据视频更新原理：
 
 ![Redux工作流程图](./images/Redux工作流程图.jpg)
 
+<br/>
+
+#### Redux 设计和使用的三项原则
+
+1. store 是唯一的
+2. 只有 store 能够改变自己的内容
+3. Reducer 必须是纯函数（给定固定的输入，就一定会有固定的输出，而且不会有任何副作用）
+
+#### Redux 的核心 API
+
+1. createStore
+2. store.dispatch
+3. store.getState
+4. store.subscribe
+
+
+
+
 
 
 
