@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import store from "./store";
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitListAction } from "./store/actionCreators";
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitListAction, getTodoList } from "./store/actionCreators";
 import axios from "axios";
 import TodoListUI from "./TodoListUI";
 
@@ -38,10 +38,8 @@ class TodoList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("todolist.json").then(response => {
-      const action =  getInitListAction(response.data);
-      store.dispatch(action);
-    });
+    const action = getTodoList();
+    store.dispatch(action);
   }
 
   render() {
