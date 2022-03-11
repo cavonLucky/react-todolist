@@ -1,8 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import store from "./store";
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getInitListAction, getTodoList } from "./store/actionCreators";
-import axios from "axios";
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction, getTodoList } from "./store/actionCreators";
 import TodoListUI from "./TodoListUI";
 
 class TodoList extends React.Component {
