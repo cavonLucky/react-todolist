@@ -1,32 +1,34 @@
-
 import React from "react";
 import { connect } from "react-redux";
 
 class TodoList extends React.Component {
-  
   render() {
+    const { inputValue, changeInputValue, handleBtnClick, list, handleDeleteItem } = this.props;
     return (
       <div>
         <div>
-          <input value={this.props.inputValue} onChange={this.props.changeInputValue} />
-          <button>提交</button>
+          <input value={inputValue} onChange={changeInputValue} />
+          <button onClick={handleBtnClick}>提交</button>
         </div>
         <ul>
-          <li>1111</li>
+          {
+            list.map((item, index) => (
+              <li value={item} key={index} onClick={handleDeleteItem.bind(index)}>{item}</li>
+            ))
+          }
         </ul>
       </div>
     )
   }
 }
 
-// 和 store 做映射
 const mapStateToProps = (state) => {
   return {
-    inputValue: state.inputValue
+    inputValue: state.inputValue,
+    list: state.list
   }
 }
 
-// store.dispatch, props  将 store.dispatch 挂在在 props 上
 const mapDispatchToProps = (dispatch) => {
   return {
     changeInputValue: (e) => {
@@ -35,12 +37,21 @@ const mapDispatchToProps = (dispatch) => {
         value: e.target.value
       };
       dispatch(action);
+    },
+    handleBtnClick: () => {
+      const action = {
+        type: "click_btn_list"
+      };
+      dispatch(action);
+    },
+    handleDeleteItem: (index) => {
+      const action = {
+        type: "click_delete_item",
+        index
+      };
+      dispatch(action);
     }
   }
 }
 
-// 让当前组件和store进行链接 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
-
-// 让 TodoList 和 store 做链接
-// 链接的规则就是 mapStateToProps 里面
